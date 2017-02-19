@@ -1,26 +1,26 @@
 function(window,undefined){
 	"use strict"
-	var SeeAliteDom=function(dom,height){
+	var DomFold=function(dom,height){
 		this.dom=dom;
 		this.showHeight=window.getComputedStyle(this.dom).height;
 		this.flag=true;
 		this.height=height||400;
 		this.init();
 	};
-	SeeAliteDom.prototype.init=function(){
+	DomFold.prototype.init=function(){
 		if(parseInt(this.showHeight)>this.height){
 			this.hideDom();
 			this.createDom();
 			this.addEvent();
 		}
 	}
-	SeeAliteDom.prototype.hideDom=function(){
+	DomFold.prototype.hideDom=function(){
 		this.dom.style.height=this.height+"px";
 		this.dom.style.overflow="hidden";
 		this.dom.style.position="relative";
 		this.dom.style.transition="height 0.3s";
 	}
-	SeeAliteDom.prototype.createDom = function() {
+	DomFold.prototype.createDom = function() {
 		this.div = document.createElement("div");
 		this.p = document.createElement("p");
 		var showDivStyle = {
@@ -51,7 +51,7 @@ function(window,undefined){
 		this.div.appendChild(this.p);
 		this.dom.appendChild(this.div);
 	}
-	SeeAliteDom.prototype.addEvent=function(){
+	DomFold.prototype.addEvent=function(){
 		this.p.addEventListener("click",function(){
 			if(this.flag){
 				this.dom.style.height=this.showHeight;
@@ -63,7 +63,7 @@ function(window,undefined){
 			
 		}.bind(this))
 	}
-	SeeAliteDom.prototype.changeDom=function(){
+	DomFold.prototype.changeDom=function(){
 		if(this.flag){
 			this.p.innerHTML="加载更多";
 		}else{
